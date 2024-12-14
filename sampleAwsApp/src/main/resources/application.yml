@@ -1,10 +1,32 @@
-roles:
-    role1:
-        lob : "CB"
-        message : "hello"
-    role2:
-        lob : "CIB"
-        message : "Wow"
+#roles:
+#    role1:
+#        lob : "CB"
+#        message : "hello"
+#    role2:
+#        lob : "CIB"
+#        message : "Wow"
+roles-list:
+    - lob : "CB"
+      message : "hello"
+    - lob : "CIB"
+      message : "Wow"
 server:
-    port: 8087
+    port: 8085
 test: "Testing"
+foo.foo1:
+  list:
+    step1:
+      0:
+        cool: qwe
+      1:
+        cool: qwe
+        warm: we
+        cold: wee
+      2:
+        cool: qwe
+    step2:
+      0:
+        cool: qwe
+        warm: we
+        cold: wee
+spring.main.allow-circular-references : true

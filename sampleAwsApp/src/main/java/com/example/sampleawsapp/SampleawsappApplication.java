@@ -28,10 +28,13 @@ public class SampleawsappApplication {
 	@Autowired
 	private FooConfig fooConfig;
 
+	@Autowired
+	private RolesList rolesList;
+
 	@GetMapping("/hello")
 	public String hello() {
 		System.out.println("In hello");
-		System.out.println(fooConfig);
+		System.out.println(rolesList.getList());
 		Map<String, List<CustomObject>> list = fooConfig.getList();
 		list.values().forEach(System.out::println);
 		return "Hello";

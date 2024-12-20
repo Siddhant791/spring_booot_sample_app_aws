@@ -1,18 +1,17 @@
-#roles:
-#    role1:
-#        lob : "CB"
-#        message : "hello"
-#    role2:
-#        lob : "CIB"
-#        message : "Wow"
 roles-list:
-    - lob : "CB"
-      message : "hello"
-    - lob : "CIB"
-      message : "Wow"
+  - lob : "CB"
+    message : "hello"
+  - lob : "CIB"
+    message : "Wow"
 server:
-    port: 8085
+    port: 8090
 test: "Testing"
+roles:
+  list:
+    - lob: CB
+      message: hello
+    - lob: CIB
+      message: Wow
 foo.foo1:
   list:
     step1:

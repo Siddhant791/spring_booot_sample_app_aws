@@ -1,7 +1,9 @@
-package com.example.sampleawsapp;
+package com.example.sampleawsapp.config;
 
 import java.util.List;
 import java.util.Map;
+
+
 public class FooConfig {
     private Map<String, List<CustomObject>> list;
 

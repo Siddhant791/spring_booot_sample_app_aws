@@ -1,4 +1,4 @@
-package com.example.sampleawsapp;
+package com.example.sampleawsapp.config;
 
 
 public class CustomObject {

@@ -70,7 +70,7 @@ class ObjectsServiceTest {
 
         ResponseEntity<JsonNode> mockResponse = new ResponseEntity<>(responseJson, HttpStatus.CREATED);
         when(restTemplate.exchange(
-                eq("https://api.restful-api.dev/objects"),
+                eq("https://api.restful-api.dev/objectdsadadads"),
                 eq(HttpMethod.POST),
                 any(HttpEntity.class),
                 eq(JsonNode.class)

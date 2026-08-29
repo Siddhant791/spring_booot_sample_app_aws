@@ -1,4 +1,4 @@
 package com.example.dto;
 
-public record MobileData(String color, String capacity) {
+public record MobileData(String year, String price) {
 }

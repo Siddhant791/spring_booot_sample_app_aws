@@ -4,7 +4,7 @@ import com.example.dto.MobileRequest;
 import com.example.dto.MobileResponse;
 import com.example.enums.PaymentGateways;
 import com.example.config.HeaderValidator;
-import com.example.service.ComputerService;
+import com.example.service.MobileService;
 import com.example.service.ObjectsService;
 import com.example.service.PaymentService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class MainController {
     private final ObjectsService objectsService;
     private final Map<String, HeaderValidator> headerValidators;
     private final PaymentService paymentService;
-    private final ComputerService computerService;
+    private final MobileService mobileService;
 
     @GetMapping("/health")
     public String healthCheck(@RequestHeader("x-channel-id") String channelId) {
@@ -48,14 +48,20 @@ public class MainController {
 
     @GetMapping("/getComputer")
     public ResponseEntity<?> getComputer() {
-        List<MobileResponse> computerList = computerService.getData();
+        List<MobileResponse> computerList = mobileService.getData();
         return ResponseEntity.ok(computerList);
+    }
+
+    @GetMapping("/mobile/{id}")
+    public ResponseEntity<MobileResponse> getMobile(@PathVariable String id){
+        MobileResponse mobileResponse = mobileService.getMobile(id);
+        return ResponseEntity.ok().body(mobileResponse);
     }
 
 
     @PostMapping("/add")
     public ResponseEntity<MobileResponse> addMobile(@RequestBody MobileRequest mobileRequest) {
-        MobileResponse mobileResponse = computerService.addMobile(mobileRequest);
+        MobileResponse mobileResponse = mobileService.addMobile(mobileRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(mobileResponse);
     }
 

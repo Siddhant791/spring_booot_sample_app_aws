@@ -1,9 +1,11 @@
 package com.example.service;
 
-import com.example.dto.Mobile;
+import com.example.dto.MobileRequest;
+import com.example.dto.MobileResponse;
 
 import java.util.List;
 
 public interface ComputerService {
-    List<Mobile> getData();
+    List<MobileResponse> getData();
+    MobileResponse addMobile(MobileRequest mobileRequest);
 }

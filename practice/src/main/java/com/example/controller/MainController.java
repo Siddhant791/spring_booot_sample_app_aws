@@ -1,18 +1,16 @@
 package com.example.controller;
 
-import com.example.dto.Computer;
-import com.example.dto.Mobile;
+import com.example.dto.MobileRequest;
+import com.example.dto.MobileResponse;
 import com.example.enums.PaymentGateways;
 import com.example.config.HeaderValidator;
 import com.example.service.ComputerService;
 import com.example.service.ObjectsService;
 import com.example.service.PaymentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -36,8 +34,10 @@ public class MainController {
     @PostMapping("/objects")
     public ResponseEntity<?> getObjects(){
 //        return objectsService.getAllObjects();
-        return objectsService.getObjectsUsingRestClient();
+//        return objectsService.getObjectsUsingRestClient();
+        return ResponseEntity.ok("ok");
     }
+
 
     @GetMapping("/pay")
     public String payment(@RequestHeader("payment-gateway") PaymentGateways paymentGatewayName , @RequestHeader("x-channel-id") String channelId) {
@@ -48,8 +48,15 @@ public class MainController {
 
     @GetMapping("/getComputer")
     public ResponseEntity<?> getComputer() {
-        List<Mobile> computerList = computerService.getData();
+        List<MobileResponse> computerList = computerService.getData();
         return ResponseEntity.ok(computerList);
+    }
+
+
+    @PostMapping("/add")
+    public ResponseEntity<MobileResponse> addMobile(@RequestBody MobileRequest mobileRequest) {
+        MobileResponse mobileResponse = computerService.addMobile(mobileRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(mobileResponse);
     }
 
 }

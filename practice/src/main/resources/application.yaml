@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: practice
+
+server:
+  port: 8091

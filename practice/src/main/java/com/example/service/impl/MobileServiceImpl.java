@@ -4,6 +4,7 @@ import com.example.config.RestApiClient;
 import com.example.dto.MobileRequest;
 import com.example.dto.MobileResponse;
 import com.example.dto.error.ErrorMobileResponse;
+import com.example.exception.NotFoundException;
 import com.example.service.MobileService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,6 @@ import java.util.List;
 @Service
 public class MobileServiceImpl implements MobileService {
 
-    private final RestApiClient restApiClient;
     private final RestClient restClient;
     private final ObjectMapper objectMapper;
 
@@ -58,7 +58,7 @@ public class MobileServiceImpl implements MobileService {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, (request, response) -> {
                     ErrorMobileResponse errorMobileResponse = objectMapper.readValue(response.getBody(), ErrorMobileResponse.class);
-                    throw new RuntimeException(errorMobileResponse.error());
+                    throw new NotFoundException(errorMobileResponse.error());
                 })
                 .body(MobileResponse.class);
     }

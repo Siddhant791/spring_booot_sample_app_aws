@@ -1,6 +1,11 @@
 spring:
   application:
     name: practice
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://cognito-idp.ap-south-1.amazonaws.com/123
 
 server:
   port: 8091

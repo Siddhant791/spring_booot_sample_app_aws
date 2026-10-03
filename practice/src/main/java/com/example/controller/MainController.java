@@ -10,6 +10,7 @@ import com.example.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,6 +47,7 @@ public class MainController {
         return paymentService.payment(paymentGatewayName);
     }
 
+    @PreAuthorize("hasRole('ADMINFAS')")
     @GetMapping("/getComputer")
     public ResponseEntity<?> getComputer() {
         List<MobileResponse> computerList = mobileService.getData();

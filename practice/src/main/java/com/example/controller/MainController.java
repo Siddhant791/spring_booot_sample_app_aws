@@ -47,7 +47,7 @@ public class MainController {
         return paymentService.payment(paymentGatewayName);
     }
 
-    @PreAuthorize("hasRole('ADMINFAS')")
+//    @PreAuthorize("hasRole('ADMINFAS')")
     @GetMapping("/getComputer")
     public ResponseEntity<?> getComputer() {
         List<MobileResponse> computerList = mobileService.getData();

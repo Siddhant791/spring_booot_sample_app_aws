@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.annotation.Logging;
 import com.example.config.RestApiClient;
 import com.example.dto.MobileRequest;
 import com.example.dto.MobileResponse;
@@ -26,6 +27,7 @@ public class MobileServiceImpl implements MobileService {
     private final ObjectMapper objectMapper;
 
     @Override
+    @Logging
     public List<MobileResponse> getData() {
         return restClient
                 .get()
@@ -51,6 +53,7 @@ public class MobileServiceImpl implements MobileService {
     }
 
     @Override
+    @Logging
     public MobileResponse getMobile(String productId) {
         return restClient
                 .get()

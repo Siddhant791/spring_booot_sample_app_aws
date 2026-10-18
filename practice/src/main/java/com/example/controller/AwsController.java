@@ -1,9 +1,12 @@
 package com.example.controller;
 
+import com.example.dto.sqs.MessageRequest;
 import com.example.service.S3Service;
 import com.example.service.SqsQueueService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,5 +26,11 @@ public class AwsController {
     @GetMapping("/getSqsQueueList")
     public List<String> getSqsQueueList() {
         return sqsQueueService.getQueueList();
+    }
+
+    @PostMapping("/sendMessage")
+    public String sendMessage(@RequestBody MessageRequest messageRequest) {
+        sqsQueueService.sendMessage(messageRequest);
+        return "Message sent successfully ";
     }
 }

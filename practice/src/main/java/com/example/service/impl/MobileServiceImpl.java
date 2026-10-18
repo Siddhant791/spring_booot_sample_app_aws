@@ -1,6 +1,5 @@
 package com.example.service.impl;
 
-import com.example.config.RestApiClient;
 import com.example.dto.MobileRequest;
 import com.example.dto.MobileResponse;
 import com.example.dto.error.ErrorMobileResponse;
@@ -10,7 +9,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
